@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<input type="button" name="name" value="kaishi" onclick="bounce.start()"/>
+	<input type="button" name="name" value="jieshu" onclick="bounce.stop()"/>
+	<script>
+		function Bounce (w ,h ,perFrame, dx, dy) {
+			this.width = w || 200;
+			this.height = h || 100;
+			this.left = (screen.availWidth - this.width)/2;			
+			this.top = (screen.availHeight - this.height)/2;
+		}
+		Bounce.prototype.start = function () {
+			var win = window.open("http://localhost", "","width=" + this.width,"height=" + this.height,"left=" + this.left,"top=" +this.top);
+			setInterval(this.nextFrame.bind(this),this.perFrame);
+		};
+		Bounce.prototype.nextFrame = function () {
+			this.left += this.dx;
+			this.top += this.dy;
+			if(this.left < 0 || this.left + this.width > screen.availWidth){
+				this.dx = -this.dx;
+			}
+			if(this.top < 0 || this.top + this.height > screen.availHeight){
+				this.dy = -this.dy;
+			}
+			this.left += this.dx;
+			this.top += this.dy;
+		};
+		Bounce.prototype.stop = function () {
+			stop
+		}
+		var bounce = new Bounce();
+	</script>
+</body>
+</html>
